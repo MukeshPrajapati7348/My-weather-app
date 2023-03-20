@@ -1,0 +1,202 @@
+.header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    .main {
+        position: relative;
+        transition: 0.3s ease all;
+        width: 30%;
+        background-color: #e3eaeb;
+        box-shadow: 1px 1px 6px 3px #606060;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        
+        .images-n-riseset {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 85%;
+
+            .images  {
+                box-shadow: 1px 1px 6px 3px #f0f9f9;
+                margin: 10px 0; 
+                width: 100px;
+                height: 50px;
+                position: relative;
+
+                .tooltiptext {
+                    visibility: hidden;
+                    position: absolute;
+                    min-width: 100%;
+                    height: 50px;
+                    left: 0px;
+                    top: 0;
+                    z-index: 1;
+                    font-weight: bold;
+                    font-size: 25px;
+                    color: rgb(255, 255, 255);
+                    background-color: rgb(52, 52, 52);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                }
+                
+                &:hover {
+                    .tooltiptext {
+                        visibility: visible;
+                        box-shadow: 0px 0px 6px 3px #9adcdc;
+                    }
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    // padding: 10px 0px;
+                    // background-size: cover;
+
+                }
+            }
+            .sunrise, .sunset {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .sunrisetext, .sunsettext {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .temperature {
+            margin-right: 35px;
+        }
+        .search{
+            width: 100%; 
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 10px;
+
+            input {
+                width: 60%;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 20px;
+                outline: none;
+                border: 2px solid#a7aaab;
+                
+                // &:hover {
+                //     border: 2px solid #7a7c7c;
+                // }
+
+            }
+            .error {
+                border: 2px solid#ea2424;
+            }
+
+            .valid {
+                border: 2px solid#a7aaab;
+            }
+
+            .searchBtn {
+                padding: 5px 10px;
+                border-radius: 15px;
+                background-color: #fafeff;
+                border: 2px solid#ea2424;
+                color: #ea2424;
+                font-weight: bold;
+                
+                &:hover {
+                    border: 2px solid#ab0a0a;
+                    color: #930606;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        div:last-child {
+            margin-bottom: 10px;
+        }
+
+        .loading, .cityNotFound {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: white;
+            background-color: rgb(44, 44, 44);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .cityNotFound {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            span {
+                font-size: 20px;
+            }
+
+            button {
+                padding: 5px 10px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width:992px) {
+    
+    .main {
+        width: 50% !important;
+    }
+}
+
+
+@media screen and (max-width:660px) {
+    
+    .main {
+        width: 60% !important;
+    }
+}
+
+@media screen and (max-width:520px) {
+    
+    .main {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width:390px) {
+    
+    .main {
+        width: 90% !important;
+    }
+}

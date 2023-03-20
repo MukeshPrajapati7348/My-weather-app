@@ -1,0 +1,67 @@
+<h1 class="header" [ngClass]="city && city.length > 0 ? 'show': 'hidden'">Your {{ city }}, {{ country }} City Weather
+</h1>
+
+<!-- Main container for the weather details -->
+<div class="container">
+    <div class="main">
+        <!-- Todo: Search field for input -->
+        <div class="search">
+            <input type="text" placeholder="Search by city" [ngClass]="cityRequiredError ? 'error': 'valid'" #input
+                (keyup.enter)="search(input)" />
+
+            <button class="searchBtn" (click)="search(input)">
+                Search
+            </button>
+        </div>
+        <!-- Weather details like temperatur, humidity, pressure etc -->
+        <div class="images-n-riseset">
+            <div class="sunrise">
+                <span class="sunrisetext">Max Temp</span>
+                <span>{{ maxTemp }} &deg;C</span>
+            </div>
+            <!-- To show respective images as per weather type -->
+            <div class="images">
+                <img *ngIf="weatherType == 'Clouds'" src="../../assets/cloud.png" alt="cloudy" tooltip="Cloudy"
+                    title="cloud" />
+                <img *ngIf="weatherType == 'Mist'" src="../../assets/Mist.png" alt="Mist" />
+                <img *ngIf="weatherType == 'Thunderstorm'" src="../../assets/thunderstorm.jpeg" alt="Thunderstorm" />
+                <img *ngIf="weatherType == 'Smoke'" src="../../assets/smoke.jpg" alt="Smoke" />
+                <img *ngIf="weatherType == 'Rain'" src="../../assets/rain.webp" alt="rainy" />
+                <img *ngIf="weatherType == 'Sunny'" src="../../assets/sunny.jpg" alt="sunny" />
+                <img *ngIf="weatherType == 'Haze'" src="../../assets/haze.jpeg" alt="Haze" />
+                <img *ngIf="weatherType == 'Clear'" src="../../assets/clear.jpg" alt="Clear" />
+                <span class="tooltiptext">{{ weatherType }}</span>
+            </div>
+            <div class="sunset">
+                <span class="sunsettext">Min Temp</span>
+                <span>{{ minTemp }} &deg;C</span>
+            </div>
+        </div>
+        <!-- To show the date and time -->
+        <div class="dateTime">
+            <strong>DateTime: &nbsp;</strong> {{ today }}-{{ month }}-{{ year }} &nbsp;|&nbsp;
+            {{ day }} {{ hours }}:{{ minutes }}:{{ seconds }}
+            {{ meredianType }}
+        </div>
+        <!-- To show humidity -->
+        <div class="wind-pressure">
+            <strong>Humidity: &nbsp;</strong> <span>{{ humidity }}</span>
+        </div>
+        <!-- to show wind speed and degree -->
+        <div class="humidity">
+            <strong>Wind speed: &nbsp;</strong> <span>{{ wind }}</span> |
+            <strong>Deg: </strong> <span>{{ deg }}</span>
+        </div>
+        <!-- To the show the pressure -->
+        <div class="pressure">
+            <strong>Pressure: &nbsp;</strong> <span>{{ pressure }}</span>
+        </div>
+        <!-- for the loading effect -->
+        <div class="loading" *ngIf="isLoading">Loading...</div>
+        <!-- if city is not found -->
+        <div class="cityNotFound" *ngIf="cityNotFound">
+            <span>City not found!</span>
+            <button (click)="takeHome()">OK</button>
+        </div>
+    </div>
+</div>
